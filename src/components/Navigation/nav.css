@@ -1,0 +1,92 @@
+*{
+    /* overflow: hidden; */
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.navigation{
+    /* position: fixed !important; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E1ECFD;
+    padding: 10px 50px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+.logo{
+    width: auto;
+    height: auto;
+}
+.logo-link{
+    font-family: "Josefin Sans";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.logo-link h3{
+    margin: 15px;
+    font-weight: 500;
+    color: #374b73;
+    font-size: 20px;
+    
+}
+
+/* -------------------- Link Css ------------------ */
+/* Orange Little lite - #F47458 */
+/* Orange Dark - #F16126 */
+
+
+.links .link{
+    padding: 10px;
+    font-family: sans-serif;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+    font-family: "Josefin sans";
+    font-weight: 500;
+    color: #374b73;
+    margin-right: 7px;
+}
+.links .link span{
+    transition: all .1s ease-in-out;
+}
+
+.links .link:hover, .active{
+    background-color: #F47458;
+    span{
+        padding-top: 5px;
+        color: #FFF9F1;
+        border-top: 3px solid #FFF9F1;
+    };
+}
+
+.btn-link{
+    border: 0px;
+    cursor: pointer;
+    outline: none;
+    padding: 10px;
+    font-family: sans-serif;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+    font-family: "Josefin sans";
+    font-weight: 500;
+    margin-right: 2px;
+    font-size: 16px;
+    background-color: #E1ECFD;
+    span{
+        padding-bottom: 4px;
+        color: #374b73;
+        border-bottom: 3px solid #374b73;
+    };
+}
+
+.btn-link:hover{
+    background-color: #F47458;
+    span{
+        padding-bottom: 4px;
+        color: #FFF9F1;
+        border-bottom: 3px solid #FFF9F1;
+    };
+}

@@ -1,0 +1,59 @@
+.container-signup{
+    margin: 20px 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    /* grid-column-gap: 40px; */
+    grid-row-gap: 10px;
+    /* border: 1px solid #000; */
+}
+.signup-logo{
+    /* border: 1px solid black; */
+    padding-top: 60px;
+    padding-right: 30px;
+    /* filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.2)); */
+}
+.content-signup{
+    padding-top: 5px;
+    /* border-left: 4px solid #000; */
+    padding-left: 40px;
+}
+.content-signup .title-signup h1{
+    font-family: "Josefin Sans";
+    padding: 10px;
+    text-align: center;
+    border-bottom: 4px solid black;
+    margin-bottom: 15px;
+    /* border: 1px solid black; */
+}
+.content-signup .s-form .box-signup{
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    padding: 10px 13px;
+}
+.content-signup .box-signup label{
+    font-family: "josefin sans";
+    font-size: 18px;
+    font-weight: 400;
+}
+.content-signup .box-signup input, textarea{
+    outline: none;
+    font-family: sans-serif;
+    padding: 9px;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.486);
+}
+.btn-box-signup button{
+    font-family: sans-serif;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 3px;
+    font-weight: 500;
+    border: 0px;
+    /* background-color: #E1ECFD; */
+    background-color: #000;
+    color: #E1ECFD;
+}
