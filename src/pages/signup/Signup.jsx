@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { signup } from '../../services/UserService';
 import login from '../../assets/login.svg'
 import './signup.css';
 
@@ -12,9 +13,11 @@ const Signup = () => {
     about : ''
   })
 
-  useEffect( () => {
-    console.log(data);
-  }, [data])
+  //For printing the data that we are adding inside the sign up form ONCHANGE...
+
+  // useEffect( () => {
+  //   console.log(data);
+  // }, [data])
 
   const[error, setError] = useState({
     errors :{},
@@ -23,6 +26,28 @@ const Signup = () => {
 
   const handleChange = (event, property) => {
     setData({...data, [property] : event.target.value})
+  }
+
+  const submitForm = (event) => {
+    event.preventDefault()
+    console.log(data);
+
+    signup(data).then( (resp) => {
+      console.log(resp);
+      // if(resp.status === 200){
+      //   setError({...error, isError : true})
+      // }
+    }).catch( (err) => {
+      console.log(err); 
+    })
+
+    setData({
+      name : '',
+      email : '',
+      userName : '',
+      password : '',
+      about : ''
+    })
   }
 
   return (
@@ -40,7 +65,7 @@ const Signup = () => {
           </div>
 
           <div className="signup-form">
-            <form action="" method="post" className='s-form'>
+            <form action="" method="post" className='s-form' onSubmit={submitForm}>
 
 
               <div className="box-signup">
