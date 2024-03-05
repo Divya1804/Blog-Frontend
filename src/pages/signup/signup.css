@@ -1,3 +1,10 @@
+::-webkit-scrollbar{
+    width: 7px;
+    background-color: #F47458;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #ffffff;
+}
 .container-signup{
     margin: 20px 50px;
     display: grid;
@@ -56,4 +63,12 @@
     /* background-color: #E1ECFD; */
     background-color: #000;
     color: #E1ECFD;
+}
+.error-msg{
+    margin-top: 3px;
+    color: #F47458;
+    font-family: "josefin sans";
+}
+.done{
+    display: none;
 }

@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { signup } from '../../services/UserService';
-import login from '../../assets/login.svg'
-import './signup.css';
+import React, { useEffect, useState } from "react";
+import { signup } from "../../services/UserService";
+import login from "../../assets/login.svg";
+import "./signup.css";
+import { Bounce, toast } from "react-toastify";
+import { Button, FormFeedback, Input, Label } from "reactstrap";
 
 const Signup = () => {
-
   const [data, setData] = useState({
-    name : '',
-    email : '',
-    userName : '',
-    password : '',
-    about : ''
-  })
+    name: "",
+    email: "",
+    userName: "",
+    password: "",
+    about: "",
+  });
 
   //For printing the data that we are adding inside the sign up form ONCHANGE...
 
@@ -19,91 +20,183 @@ const Signup = () => {
   //   console.log(data);
   // }, [data])
 
-  const[error, setError] = useState({
-    errors :{},
-    isError : false
-  })
+  const [error, setError] = useState({
+    errors: {},
+    isError: false,
+  });
 
   const handleChange = (event, property) => {
-    setData({...data, [property] : event.target.value})
-  }
+    setData({ ...data, [property]: event.target.value });
+  };
 
   const submitForm = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     console.log(data);
 
-    signup(data).then( (resp) => {
-      console.log(resp);
-      // if(resp.status === 200){
-      //   setError({...error, isError : true})
-      // }
-    }).catch( (err) => {
-      console.log(err); 
-    })
-
-    setData({
-      name : '',
-      email : '',
-      userName : '',
-      password : '',
-      about : ''
-    })
-  }
+    signup(data)
+      .then((resp) => {
+        toast.success("🦄 User is registered successfully !!..", {
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+        console.log(resp);
+        setData({
+          name: "",
+          email: "",
+          userName: "",
+          password: "",
+          about: "",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("User is not registered successfully !!..", {
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+        setError({
+          errors: err,
+          isError: true,
+        });
+      });
+  };
 
   return (
     <>
       <div className="container-signup">
-
         <div className="signup-logo">
           <img src={login} alt="signup" />
         </div>
 
         <div className="content-signup">
-
           <div className="title-signup">
             <h1>Sign Up</h1>
           </div>
 
           <div className="signup-form">
-            <form action="" method="post" className='s-form' onSubmit={submitForm}>
-
-
+            <form
+              action=""
+              method="post"
+              className="s-form"
+              onSubmit={submitForm}
+            >
               <div className="box-signup">
-                <label htmlFor="user_name">Full Name </label>
-                <input type="text" name="name" id="name" placeholder='Enter Your Name' onChange={(e) => handleChange(e, 'name')} value={data.name} />
+                <Label htmlFor="user_name">Full Name </Label>
+                <Input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Enter Your Name"
+                  onChange={(e) => handleChange(e, "name")}
+                  value={data.name}
+                />
+                <FormFeedback
+                  className={
+                    error.errors?.response?.data?.name ? "error-msg" : "done"
+                  }
+                >
+                  {error.errors?.response?.data?.name}
+                </FormFeedback>
               </div>
 
               <div className="box-signup">
                 <label htmlFor="user_email">Email Id</label>
-                <input type="email" name="email" id="email" placeholder='Enter Your Email' onChange={(e) => handleChange(e, 'email')} value={data.email} />
+                <Input
+                  type="text"
+                  name="email"
+                  id="email"
+                  placeholder="Enter Your Email"
+                  onChange={(e) => handleChange(e, "email")}
+                  value={data.email}
+                />
+                <FormFeedback
+                  className={
+                    error.errors?.response?.data?.email ? "error-msg" : "done"
+                  }
+                >
+                  {error.errors?.response?.data?.email}
+                </FormFeedback>
               </div>
 
               <div className="box-signup">
                 <label htmlFor="user_username">Username</label>
-                <input type="text" name="userName" id="userName" placeholder='Enter Your Username' onChange={(e) => handleChange(e, 'userName')} value={data.userName} />
+                <Input
+                  type="text"
+                  name="userName"
+                  id="userName"
+                  placeholder="Enter Your Username"
+                  onChange={(e) => handleChange(e, "userName")}
+                  value={data.userName}
+                />
+                <FormFeedback
+                  className={
+                    error.errors?.response?.data?.userName
+                      ? "error-msg"
+                      : "done"
+                  }
+                >
+                  {error.errors?.response?.data?.userName}
+                </FormFeedback>
               </div>
 
               <div className="box-signup">
                 <label htmlFor="user_password">Password</label>
-                <input type="password" name="password" id="password" placeholder='Enter the Password' onChange={(e) => handleChange(e, 'password')} value={data.password}/>
+                <Input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Enter the Password"
+                  onChange={(e) => handleChange(e, "password")}
+                  value={data.password}
+                />
+                <FormFeedback
+                  className={
+                    error.errors?.response?.data?.password
+                      ? "error-msg"
+                      : "done"
+                  }
+                >
+                  {error.errors?.response?.data?.password}
+                </FormFeedback>
               </div>
 
               <div className="box-signup">
                 <label htmlFor="user_about">About yourself</label>
                 {/* <input type="text" name="about" id="about" placeholder='Enter Your About' /> */}
-                <textarea name='about' id='about' rows={3} placeholder='Tell us somehthing about yourself' onChange={(e) => handleChange(e, 'about')} value={data.about}></textarea>
+                <Input
+                  type="textarea"
+                  name="about"
+                  id="about"
+                  rows={3}
+                  placeholder="Tell us somehthing about yourself"
+                  onChange={(e) => handleChange(e, "about")}
+                  value={data.about}
+                />
               </div>
 
               <div className="box-signup btn-box-signup">
-                <button type="submit" name="register" id="register" value="Sign Up" className='input'>Sign Up</button>
+                <Button active block color="dark" size="" className="input">
+                  Sign Up
+                </Button>
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Signup;
