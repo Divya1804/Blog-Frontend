@@ -45,6 +45,10 @@ const Signup = () => {
           theme: "light",
           transition: Bounce,
         });
+        setError({
+          errors: {},
+          isError: false
+        });
         console.log(resp);
         setData({
           name: "",
@@ -56,16 +60,16 @@ const Signup = () => {
       })
       .catch((err) => {
         console.log(err);
-        toast.error("User is not registered successfully !!..", {
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        // toast.error("User is not registered successfully !!..", {
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   theme: "light",
+        //   transition: Bounce,
+        // });
         setError({
           errors: err,
           isError: true,
@@ -87,7 +91,7 @@ const Signup = () => {
 
           <div className="signup-form">
             <form
-              action=""
+              action="login"
               method="post"
               className="s-form"
               onSubmit={submitForm}

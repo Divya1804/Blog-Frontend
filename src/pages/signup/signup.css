@@ -1,6 +1,6 @@
 ::-webkit-scrollbar{
-    width: 7px;
-    background-color: #F47458;
+    width: 0px;
+    background-color: #E1ECFD;
 }
 ::-webkit-scrollbar-thumb{
     background-color: #ffffff;
@@ -24,6 +24,9 @@
     padding-top: 5px;
     /* border-left: 4px solid #000; */
     padding-left: 40px;
+    height: 84vh;
+    /* border: 1px solid #000; */
+    overflow-y: scroll;
 }
 .content-signup .title-signup h1{
     font-family: "Josefin Sans";

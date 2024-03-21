@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import login from "../../assets/login1.svg";
+import login1 from "../../assets/login1.svg";
 import "./login.css";
-import { Button, Input } from "reactstrap";
+import { Button, FormFeedback, Input } from "reactstrap";
+import { toast } from "react-toastify";
+import { login } from "../../services/UserService";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -9,16 +11,47 @@ const Login = () => {
     password: "",
   });
 
+  const [error, setError] = useState({
+    errors: {},
+    isError: false,
+  });
+
   const handleChange = (e, property) => {
-    setLoginData({...loginData, [property]: e.target.value });
-    console.log(loginData);
+    setLoginData({ ...loginData, [property]: e.target.value.trim() });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    login(loginData)
+      .then((resp) => {
+        toast.success("User Loggedin Successfully");
+        console.log(resp);
+
+        setLoginData({
+          username: "",
+          password: "",
+        });
+
+        setError({
+          errors: {},
+          isError: false,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+
+        setError({
+          errors: err,
+          isError: true,
+        });
+      });
   };
 
   return (
     <>
       <div className="container-login">
         <div className="login-logo">
-          <img src={login} alt="Login" />
+          <img src={login1} alt="Login" />
         </div>
 
         <div className="content-login">
@@ -27,7 +60,12 @@ const Login = () => {
           </div>
 
           <div className="login-form">
-            <form action="" method="post" className="l-form">
+            <form
+              action=""
+              method="post"
+              className="l-form"
+              onSubmit={handleSubmit}
+            >
               <div className="box-login">
                 <label htmlFor="user_username">Username</label>
                 <Input
@@ -36,20 +74,38 @@ const Login = () => {
                   id="userName"
                   placeholder="Enter Your Username"
                   value={loginData.username}
-                  onChange={(e) => handleChange(e, 'username')}
+                  onChange={(e) => handleChange(e, "username")}
                 />
+                <FormFeedback
+                  className={
+                    error.errors?.response?.data?.username
+                      ? "error-msg"
+                      : "done"
+                  }
+                >
+                  {error.errors?.response?.data?.username}
+                </FormFeedback>
               </div>
 
               <div className="box-login">
                 <label htmlFor="user_password">Password</label>
-                <input
+                <Input
                   type="password"
                   name="password"
                   id="password"
                   placeholder="Enter the Password"
                   value={loginData.password}
-                  onChange={(e) => handleChange(e, 'password')}
+                  onChange={(e) => handleChange(e, "password")}
                 />
+                <FormFeedback
+                  className={
+                    error.errors?.response?.data?.password
+                      ? "error-msg"
+                      : "done"
+                  }
+                >
+                  {error.errors?.response?.data?.password}
+                </FormFeedback>
               </div>
 
               <div className="box-login btn-box-login">
