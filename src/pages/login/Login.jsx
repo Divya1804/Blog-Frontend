@@ -4,12 +4,16 @@ import "./login.css";
 import { Button, FormFeedback, Input } from "reactstrap";
 import { toast } from "react-toastify";
 import { login } from "../../services/UserService";
+import { doLogin } from "../../auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
   });
+
+  const navigate = useNavigate()
 
   const [error, setError] = useState({
     errors: {},
@@ -27,6 +31,11 @@ const Login = () => {
         toast.success("User Loggedin Successfully");
         console.log(resp);
 
+        doLogin(resp, () => {
+          navigate('/user/dashboard')
+          console.log("Data added to the local Storage");
+        });
+
         setLoginData({
           username: "",
           password: "",
@@ -39,7 +48,7 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err);
-
+        toast.error("Server Problem");
         setError({
           errors: err,
           isError: true,

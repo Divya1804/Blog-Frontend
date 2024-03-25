@@ -4,15 +4,18 @@ import login from "../../assets/login.svg";
 import "./signup.css";
 import { Bounce, toast } from "react-toastify";
 import { Button, FormFeedback, Input, Label } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
-    userName: "",
+    username: "",
     password: "",
     about: "",
   });
+
+  const navigate = useNavigate();
 
   //For printing the data that we are adding inside the sign up form ONCHANGE...
 
@@ -35,6 +38,7 @@ const Signup = () => {
 
     signup(data)
       .then((resp) => {
+        navigate("/user/dashboard")
         toast.success("🦄 User is registered successfully !!..", {
           autoClose: 5000,
           hideProgressBar: false,
@@ -53,7 +57,7 @@ const Signup = () => {
         setData({
           name: "",
           email: "",
-          userName: "",
+          username: "",
           password: "",
           about: "",
         });
@@ -138,20 +142,20 @@ const Signup = () => {
                 <label htmlFor="user_username">Username</label>
                 <Input
                   type="text"
-                  name="userName"
-                  id="userName"
+                  name="username"
+                  id="username"
                   placeholder="Enter Your Username"
-                  onChange={(e) => handleChange(e, "userName")}
-                  value={data.userName}
+                  onChange={(e) => handleChange(e, "username")}
+                  value={data.username}
                 />
                 <FormFeedback
                   className={
-                    error.errors?.response?.data?.userName
+                    error.errors?.response?.data?.username
                       ? "error-msg"
                       : "done"
                   }
                 >
-                  {error.errors?.response?.data?.userName}
+                  {error.errors?.response?.data?.username}
                 </FormFeedback>
               </div>
 

@@ -2,26 +2,37 @@
 import React from 'react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation.jsx';
-import Home from './pages/Home.jsx';
-import About from './pages/About.jsx';
+import About from './pages/about/About.jsx';
 import Signup from './pages/signup/Signup.jsx';
 import Login from './pages/login/Login.jsx';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import Home from './pages/home/Home.jsx';
+import PrivateRoutes from './components/user-routes/PrivateRoutes.jsx';
+import UserDashboard from './pages/dashboard/UserDashboard.jsx';
+import ProfileInfo from './pages/dashboard/ProfileInfo.jsx';
+import Post from './pages/createPost/Post.jsx';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <ToastContainer />
+        <ToastContainer position='bottom-center' />
         <Navigation />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/about' element={<About />} />
-          <Route path='/contact' element={<div>Contact page</div>} />
+          {/* <Route path='/contact' element={<div>Contact page</div>} /> */}
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
+
+          <Route path='/user' element = {<PrivateRoutes/>}>
+            <Route path='post' element={<Post/>} />
+            <Route path='dashboard' element = {<UserDashboard/> } />
+            <Route path='profile' element = {<ProfileInfo/>} />
+          </Route>
+
           <Route path='/*' element={<h1>Page not found</h1>} />
         </Routes>
       </BrowserRouter>
