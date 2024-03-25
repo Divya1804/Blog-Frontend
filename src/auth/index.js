@@ -24,3 +24,15 @@ export const getCurrentUserDetails = () => {
         return undefined;
     }
 }
+
+export const getToken = () => {
+    // let userData = JSON.parse(localStorage.getItem("data"));
+    // userData.token = token;
+    // localStorage.setItem("data",JSON.stringify(userData))
+
+    if(isLoggedIn()){
+        return JSON.parse(localStorage.getItem('data')).jwtToken;
+    }else{
+        return null;
+    }
+}
