@@ -6,10 +6,12 @@ import JoditEditor, { Jodit } from 'jodit-react';
 import { createPost as doCreatePost } from "../../services/post-service";
 import { getCurrentUserDetails } from "../../auth";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Post = () => {
     const [category, setCategory] = useState([]);
     const editor = useRef(null)
+    const navigate = useNavigate()
 
     const [post, setPost] = useState({
         postTitle: '',
@@ -71,6 +73,7 @@ const Post = () => {
                 postDescription: '',
                 categoryId: ''
             })
+            navigate("/")
             // console.log(data);
         }).catch((error) => {
             toast.error("Error while creating post")

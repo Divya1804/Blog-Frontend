@@ -1,0 +1,67 @@
+.home-container{
+    margin: 25px 150px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    box-sizing: border-box;
+    grid-template-rows: 1fr;
+    /* grid-column-gap: 40px; */
+    grid-row-gap: 10px;
+    /* border: 1px solid #000; */
+}
+.home-title h1{
+    font-family: "Josefin Sans";
+    padding: 10px;
+    text-align: center;
+    border-bottom: 4px solid black;
+    margin-bottom: 15px;
+    /* border: 1px solid black; */
+}
+.home-blogs{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+    /* border: 1px solid black; */
+}
+.blog{
+    height: 150px;
+    width: 96%;
+    margin: 10px 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    border: 1px solid black;
+    background-color: #E1ECFD;
+    font-family: "Josefin Sans";
+}
+.blog h1{
+    font-family: "Josefin Sans";
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.blog p{
+    font-family: "Josefin Sans";
+    margin: 10px;
+    text-align: justify;
+    padding-top: 2px;
+    max-height: 35px;
+    overflow: hidden;
+    /* border: 1px solid black; */
+}
+.blog-btn button{
+    font-family: sans-serif;
+    height: 30px;
+    padding: 10px 4px;
+    font-size: 16px;
+    border-radius: 3px;
+    font-weight: 500;
+    border: 0px;
+    margin-left: 10px;
+    background-color: #F47458;
+    color: #fff;
+    span{
+        padding-top: 5px;
+        color: #FFF9F1;
+        border-top: 3px solid #FFF9F1;
+    };
+}
