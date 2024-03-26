@@ -23,7 +23,7 @@ const PostPage = () => {
                 <div className="page-title">
                     <h1>Blog Page {postId}</h1>
                 </div>
-                <div className="page-detail">
+                <div className="page-path">
                     <Link to={'/'} >Home </Link> / <Link to={''}> Blog</Link>
                 </div>
                 <div className="page-detail">

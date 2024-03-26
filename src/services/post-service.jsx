@@ -15,3 +15,8 @@ export const getPost = (id) => {
     return myAxios.get(`/post/${id}`)
        .then((response) => response.data);
 }
+
+export const getPostsByUser = (userId) => {
+    return privateAxios.get(`/user/${userId}/post`)
+        .then((response) => response.data);
+}
