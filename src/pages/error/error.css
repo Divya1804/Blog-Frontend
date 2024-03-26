@@ -1,0 +1,38 @@
+.error-container{
+    background: #FFF9F1;
+    height: 88vh;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.error-image img{
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    /* border: 1px solid #000; */
+}
+.error-content img{
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.error-content h1{
+    margin: 20px 0;
+    font-size: 60px;
+    font-family: "Josefin sans";
+}
+.error-content p{
+    font-size: 20px;
+    font-family: "Josefin sans";
+    margin: 20px 0;
+}
+.error-link{
+    font-family: "Josefin Sans";
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-decoration: none;
+}
+.error-link h2{
+    margin-left: 20px;
+}

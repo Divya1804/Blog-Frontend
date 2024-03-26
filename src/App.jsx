@@ -13,6 +13,7 @@ import UserDashboard from './pages/dashboard/UserDashboard.jsx';
 import ProfileInfo from './pages/dashboard/ProfileInfo.jsx';
 import Post from './pages/createPost/Post.jsx';
 import PostPage from './pages/post-page/PostPage.jsx';
+import Error from './pages/error/Error.jsx';
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
             <Route path='profile' element = {<ProfileInfo/>} />
           </Route>
 
-          <Route path='/*' element={<h1>Page not found</h1>} />
+          <Route path='/*' element={<Error />} />
         </Routes>
       </BrowserRouter>
     </div>
