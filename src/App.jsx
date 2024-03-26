@@ -12,6 +12,7 @@ import PrivateRoutes from './components/user-routes/PrivateRoutes.jsx';
 import UserDashboard from './pages/dashboard/UserDashboard.jsx';
 import ProfileInfo from './pages/dashboard/ProfileInfo.jsx';
 import Post from './pages/createPost/Post.jsx';
+import PostPage from './pages/post-page/PostPage.jsx';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/about' element={<About />} />
-          {/* <Route path='/contact' element={<div>Contact page</div>} /> */}
+          <Route path='/post/:postId' element={<PostPage/>} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
 

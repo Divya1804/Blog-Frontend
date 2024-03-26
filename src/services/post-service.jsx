@@ -10,3 +10,8 @@ export const getAllPosts = () => {
     return myAxios.get('/posts')
        .then((response) => response.data);
 }
+
+export const getPost = (id) => {
+    return myAxios.get(`/post/${id}`)
+       .then((response) => response.data);
+}

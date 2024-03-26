@@ -1,0 +1,36 @@
+.page-container{
+    margin: 25px 150px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    box-sizing: border-box;
+    grid-template-rows: 1fr;
+    /* grid-column-gap: 40px; */
+    grid-row-gap: 10px;
+    /* border: 1px solid #000; */
+}
+.page-title h1{
+    font-family: "Josefin Sans";
+    padding: 10px;
+    text-align: center;
+    border-bottom: 4px solid black;
+    margin-bottom: 15px;
+    /* border: 1px solid black; */
+}
+.page-detail {
+    font-family: sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    font-size: 16px;
+}
+.page-content{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+.page-content h1{
+    margin: 10px 0;
+    font-family: "Josefin sans";
+}
+.content p{
+    margin-top: 20px;
+    line-height: 1.6rem;
+}
